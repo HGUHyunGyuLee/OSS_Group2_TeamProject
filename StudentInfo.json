@@ -1,0 +1,233 @@
+{ 
+    "student1": { 
+        "studentID": "21500341",
+        "name": "seo",
+        "major": "CS" ,
+        "semester": "8",
+        
+        "major course": {
+            "Data Structure": ["3", "A+"],
+            "C Programming": ["3", "B0"],
+            "Introduction to JAVA Programming": ["3", "B+"], 
+            "Open Source Software": ["3", "A0"], 
+            "Circuit Theory 1": ["3", "B0"], 
+            "Circuit Theory 2": ["3", "A0"], 
+            "Logic Design": ["3", "A0"], 
+            "Mobile App Development": ["3", "A0"], 
+            "Practical Project 1": ["3", "A+"],
+            "Practical Project 2": ["3", "A0"],
+            "Algorithm Analysis": ["3", "B0"],
+            "Object-Oriented Design Pattern": ["3", "B+"],
+            "Operating System": ["3", "A0"],
+            "Data-Base": ["3", "B+"],
+            "Vocation and Career": ["3", "A0"],
+            "Electronic Circuits 1": ["3", "B0"],
+            "Semiconductor Physics": ["3", "A0"],
+            "Embedded Processor Application": ["3", "A0"],
+            "Principles of Communication": ["3", "B0"]           
+        },
+
+        "general course": {
+            "Christian world view": ["2", "A0"],
+            "Christian Foundation 1": ["2", "A+"], 
+            "Elementary Calculus": ["2", "A0"], 
+            "Social Service": ["2", "B0"], 
+            "Information ": ["2", "A0"], 
+            "Creation and Evolution": ["2", "A+"], 
+            "Introduction to Business": ["2", "A0"], 
+            "Christian Foundation 2": ["2", "B+"], 
+            "Understanding of Art": ["2", "A0"], 
+            "Japanese 1": ["2", "B+"], 
+            "Western History": ["2", "B0"], 
+            "Elective Reading": ["2", "B0"],
+            "English Reading & Discussion": ["2", "B0"], 
+            "English Grammar & Composion": ["2", "A0"], 
+            "Chapel 1": ["2", "A0"], 
+            "English Foundation": ["2", "A0"], 
+            "Discrete Math": ["2", "B0"],
+            "Chinese": ["2", "A0"],
+            "Physical Education 1": ["2", "A+"],
+            "Physical Education 2": ["2", "A0"] 
+        }
+    },
+    "student2": { 
+        "studentID": "21600234",
+        "name": "park",
+        "major": "CS" ,
+        "semester": "6",
+        
+        "major course": {
+            "Engineering Project Planning": ["3", "A0"],
+            "RF Circuit Design": ["3", "A+"],
+            "Introduction to Digital Signal Processing": ["3", "A0"],
+            "Capstone Design": ["3", "B+"],
+            "Introduction to Engineering Design ": ["3", "B0"],
+            "Signal and System": ["3", "A+"],
+            "Web Service Development": ["3", "A0"],
+            "C++ Programming": ["3", "A+"],
+            "Computer Architecture": ["3", "A0"],
+            "Computer Vision": ["3", "B0"],
+            "Discrete Mathematics": ["3", "A0"],
+            "Basic Circuit Theory2": ["3", "B+"],
+            "Electromagnetic": ["3", "B+"],
+            "IoT System Design": ["3", "A0"]
+        },
+
+        "general course": {
+            "Academic Writing": ["2", "A+"],
+            "Practice of Church Music": ["2", "A0"],
+            "Craft for engineering prototyping": ["2", "A+"],
+            "Artificial Intelligence Applications for All": ["2", "A0"],
+            "Understanding Cross Culture Experience": ["2", "B0"],
+            "Human Relationship & Self Growth": ["2", "B+"],
+            "Creative Learning": ["2", "A0"],
+            "Job and Mission": ["2", "B0"],
+            "Understanding of Leadership": ["2", "A0"],
+            "Introduction to spatial design and theory": ["2", "B+"],
+            "Drawing Basic 1": ["2", "C0"],
+            "Introduction to ICT Application": ["2", "D0"],
+            "Common Readings": ["2", "A0"],
+            "Studies of Korean History": ["2", "C+"]
+     
+        }
+    },
+
+    "student3": { 
+        "studentID": "21700568",
+        "name": "hyun",
+        "major": "CS" ,
+        "semester": "4",
+        
+        "major course": {
+            "Data Structure": ["3", "A+"],
+            "C Programming": ["3", "A0"],
+            "Introduction to JAVA Programming": ["3", "A+"], 
+            "Open Source Software": ["3", "C+"], 
+            "Circuit Theory 1": ["3", "A0"], 
+            "Circuit Theory 2": ["3", "B0"], 
+            "Logic Design": ["3", "B0"], 
+            "Mobile App Development": ["3", "A0"], 
+            "Practical Project 1": ["3", "C0"],
+            "Practical Project 2": ["3", "A0"]
+        },
+
+        "general course": {
+            "Oriental History and Culture": ["2", "A+"],
+            "Literature, Film, and History": ["2", "A0"],
+            "General Chemistry Lab": ["2", "A0"],
+            "Diseases and Health": ["2", "C0"],
+            "Physics Primer": ["2", "A0"],
+            "Understanding Korean Social Structure and Culture": ["2", "A0"],
+            "Understanding History of Church": ["2", "B0"],
+            "Integrative Study on Learning and Faith 1": ["2", "A0"],
+            "Statistical Methods": ["2", "A+"],
+            "Understanding the Bible": ["2", "C+"],
+            "Mission Perspective": ["2", "A0"]
+        }
+    },
+
+    "student4": { 
+        "studentID": "21600432",
+        "name": "oh",
+        "major": "CS" ,
+        "semester": "7",
+        
+        "major course": {
+            "Discrete Mathematics": ["3", "A+"],
+            "Basic Circuit Theory2": ["3", "A0"],
+            "Electromagnetic": ["3", "B+"],
+            "IoT System Design": ["3", "B0"],
+            "Smart System Applications": ["3", "C0"],
+            "Problem Solving Through Computational Thinking": ["3", "A0"],
+            "Automatic Control Systems": ["3", "A+"],
+            "Computer Networks": ["3", "A0"],
+            "Probability and random processes": ["3", "B+"],
+            "Engineering Project Planning": ["3", "A0"],
+            "Multi Sensor Signal Processing": ["3", "A0"],
+            "Machine Learning": ["3", "B0"],
+            "Programming Language Theory": ["3", "B0"],
+            "Computer Security": ["3", "A0"],
+            "IoT Laboratories": ["3", "A+"],
+            "Java Programming": ["3", "A0"],
+            "Post-capstone Research": ["3", "A0"]
+        },
+
+        "general course": {
+            "Computer graphics": ["2", "A+"],
+            "Academic Writing": ["2", "A0"],
+            "Practice of Church Music": ["2", "B0"],
+            "Craft for engineering prototyping": ["2", "B+"],
+            "Artificial Intelligence Applications for All": ["2", "A0"],
+            "Understanding Cross Culture Experience": ["2", "A+"],
+            "Human Relationship & Self Growth": ["2", "C+"],
+            "Creative Learning": ["2", "B0"],
+            "Job and Mission": ["2", "A0"],
+            "Understanding of Leadership": ["2", "A0"],
+            "Introduction to spatial design and theory": ["2", "A0"],
+            "Drawing Basic 1": ["2", "B0"],
+            "Introduction to ICT Application": ["2", "A+"],
+            "Common Readings": ["2", "A0"],
+            "Studies of Korean History": ["2", "B+"],
+            "Introduction to Korean Literature": ["2", "A0"],
+            "History of science, Techno, and human mind": ["2", "C+"],
+            "Differential Equations and Applications": ["2", "A0"],
+            "General Chemistry": ["2", "A0"]
+        }
+    },
+
+    "student5": { 
+        "studentID": "21400222",
+        "name": "lee",
+        "major": "CS" ,
+        "semester": "8",
+        
+        "major course": {
+            "Object-Oriented Design Pattern": ["3", "A+"],
+            "Operating System": ["3", "C0"],
+            "Data-Base": ["3", "A0"],
+            "Vocation and Career": ["3", "A+"],
+            "Electronic Circuits 1": ["3", "A0"],
+            "Semiconductor Physics": ["3", "B0"],
+            "Embedded Processor Application": ["3", "B+"],
+            "Principles of Communication": ["3", "A0"],
+            "Engineering Project Planning": ["3", "A+"],
+            "RF Circuit Design": ["3", "A0"],
+            "Introduction to Digital Signal Processing": ["3", "C+"],
+            "Capstone Design": ["3", "D0"],
+            "Introduction to Engineering Design ": ["3", "A0"],
+            "Signal and System": ["3", "A+"],
+            "Web Service Development": ["3", "C0"],
+            "C++ Programming": ["3", "B0"],
+            "Computer Architecture": ["3", "A0"],
+            "Computer Vision": ["3", "C+"],
+            "Discrete Mathematics": ["3", "A+"]
+        },
+
+        "general course": {
+            "Physics Primer": ["2", "A+"],
+            "Understanding Korean Social Structure and Culture": ["2", "B0"],
+            "Understanding History of Church": ["2", "B+"],
+            "Integrative Study on Learning and Faith 1": ["2", "A0"],
+            "Statistical Methods": ["2", "C+"],
+            "Understanding the Bible": ["2", "D0"],
+            "Mission Perspective": ["2", "A0"],
+            "Law and Civil Society": ["2", "A+"],
+            "Understanding Christianity": ["2", "C0"],
+            "Christian Apologetics": ["2", "D0"],
+            "Christianity and Comparative Religion": ["2", "A0"],
+            "Christianity and Modern thoughts": ["2", "A+"],
+            "Mission and Contemporary Society": ["2", "A0"],
+            "Contemporary Society and Woman": ["2", "A0"],
+            "Mathematical analysis": ["2", "A+"],
+            "Numerical analysis": ["2", "B0"],
+            "Media & Cultural Diversity": ["2", "C0"],
+            "Introduction to Video production": ["2", "D0"],
+            "Senior Seminar": ["2", "A0"]   
+        }
+    }
+    
+
+}
+
+
+
