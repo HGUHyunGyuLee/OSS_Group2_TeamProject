@@ -93,10 +93,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Oh JaeYoung** - *Initial work* - [Oh JaeYoung](https://github.com/PurpleBooth)
+* **Oh JaeYoung** - *Initial work* - [Oh JaeYoung](https://github.com/HGUHyunGyuLee)
 * **Lee HyunGyu** - *Initial work* - [Lee HyunGyu](https://github.com/HGUHyunGyuLee)
-* **Seo Jisu** - *Initial work* - [Seo Jisu](https://github.com/PurpleBooth)
-* **Son SaeMin** - *Initial work* - [Son SaeMin](https://github.com/PurpleBooth)
+* **Seo Jisu** - *Initial work* - [Seo Jisu](https://github.com/HGUHyunGyuLee)
+* **Son SaeMin** - *Initial work* - [Son SaeMin](https://github.com/HGUHyunGyuLee)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
