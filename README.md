@@ -8,10 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Any compilers for C languages
 
 ```
-Give examples
+[Code::Blocks][example] 
+  [example]: http://www.codeblocks.org/downloads/26
 ```
 
 ### Installing
