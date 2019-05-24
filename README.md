@@ -10,13 +10,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 Any compilers for C languages
 
-```
-A [link][example].
 
-  [example]: http://example.com
+  [Code::Blocks][example]
   
-[Code::Blocks][example] 
   [example]: http://www.codeblocks.org/downloads/26
+```
+
+  
+
   
 ```
 
