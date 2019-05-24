@@ -98,7 +98,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **Seo Jisu** - *Initial work* - [Seo Jisu](https://github.com/HGUHyunGyuLee)
 * **Son SaeMin** - *Initial work* - [Son SaeMin](https://github.com/HGUHyunGyuLee)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [PurpleBooth](https://gist.github.com/PurpleBooth) for the template of readme and contribution files
 
 ## License
 
