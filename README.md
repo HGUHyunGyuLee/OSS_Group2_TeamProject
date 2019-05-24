@@ -28,7 +28,7 @@ Any compilers for C languages
   
   
 ```
-Give the example
+Any C compilers can be utilized for this program.
 
 ```
 
@@ -39,16 +39,19 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+1. go to the link
+2. download the compiler
+3. Install
 ```
 
-And repeat
+In case of using Terminal or other compilers
 
 ```
-until finished
+1. Fork the repository
+2. compile the code
+3. run with a name of the adequate input file(detail decription below)
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -72,15 +75,17 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+This version(0.0.1) of the program is only for the simple implementaions.
+The program has some strict regulations on the format and the style of writing the input json file. 
+Please follow the format we used in the provided example of json file.
 
 ## Built With
 
-* [VisualStudio](https://visualstudio.microsoft.com/ko/)- AS a compiler 
+* [VisualStudio](https://visualstudio.microsoft.com/ko/)- As a compiler 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/HGUHyunGyuLee/OSS_Group2_TeamProject/blob/master/Contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -88,10 +93,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Lee HyunGyu** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Oh JaeYoung** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Seo Jisu** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Son SaeMin** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Oh JaeYoung** - *Initial work* - [Oh JaeYoung](https://github.com/PurpleBooth)
+* **Lee HyunGyu** - *Initial work* - [Lee HyunGyu](https://github.com/HGUHyunGyuLee)
+* **Seo Jisu** - *Initial work* - [Seo Jisu](https://github.com/PurpleBooth)
+* **Son SaeMin** - *Initial work* - [Son SaeMin](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
