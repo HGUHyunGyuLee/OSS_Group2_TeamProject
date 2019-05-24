@@ -15,7 +15,8 @@ Any compilers for C languages
   
   [link]: http://www.codeblocks.org/downloads/26
 * for Ubuntu Users
-  [Code::Blocks for Ubuntu][link]
+  [Code::BlocksforUbuntu][link]
+  
   [link]: https://launchpad.net/~damien-moore/+archive/ubuntu/codeblocks-stable
 * for biginners in C languages
   [Dev-C++][link]
@@ -107,6 +108,6 @@ This project is licensed under the HGU License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * This program was developed only for academic purpose
-* 
-*
+* Something else
+* etc
 
