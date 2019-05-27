@@ -5,7 +5,6 @@
 #include <string.h> 
 #include <ctype.h>
 
-
 typedef enum {
    UNDEFINED = 0,
    OBJECT = 1,
@@ -27,12 +26,22 @@ int scanning(char* save, tok_t** tokens, int* filelen);
 int stringtoken(char* save, tok_t* t, int* filelen);
 int arraytoken(char* save, tok_t* t, int* filelen);
 int objecttoken(char* save, tok_t* t, int* filelen);
+int primitivetoken(char* save, tok_t* t, int* filelen);
+bool checkblank(char ch);
 
+bool checkblank(char ch) {
+   if ((ch >= 9) && (ch <= 13)) {
+      return true;
+   }
+   else if (ch == 32) {
+      return true;
+   }
+   return false;
+}
 char* saving(const char *filename, int* filelen)
 {
    FILE *fp = fopen(filename, "rb"); // it should be rb!!!
    if (fp == 0) {
-      printf("Your file doesn't exist");
       return 0;
    }
 
@@ -82,19 +91,16 @@ int scanning(char* saved, tok_t** token, int* filelen) {
          t[filelen[2]].type = ARRAY;
          filelen[1] += 1;
          filelen[1] = arraytoken(saved, t, filelen);
-      }/*
-      else if (isdigit(saved[i])) {
-         t[filelen[2]].start = i;
-         t[filelen[2]].type = PRIMITIVE;//or undefined??
-         //filelen[2] += 1;
-         filelen[1] = numbertoken(saved, token, filelen);
-      }*/
-      else if (isblank(saved[filelen[1]])){
-         filelen[1] = filelen[1] + 1;//blank or etc...
+      }
+      else if (checkblank(saved[filelen[1]])){
+         filelen[1] = filelen[1] + 1;//blank
       }
       else {
-         filelen[1] = filelen[1] + 1;
-         //printf("error at parsing");
+         t[filelen[2]].start = filelen[1];
+         t[filelen[2]].type = PRIMITIVE;
+         filelen[1] += 1;
+         filelen[1] = primitivetoken(saved, t, filelen);
+         //prmitive!!
       }
    }
 
@@ -102,8 +108,6 @@ int scanning(char* saved, tok_t** token, int* filelen) {
 }
 
 int stringtoken(char* saved, tok_t* t, int* filelen) {
-
-
    int ntoken = filelen[2];
    filelen[2] += 1;
    int size = 0;
@@ -118,8 +122,6 @@ int stringtoken(char* saved, tok_t* t, int* filelen) {
          t[ntoken].size = 0;
       }
       t[ntoken].end = filelen[1];
-
-
       filelen[1] += 1;
       
       return filelen[1];
@@ -131,25 +133,34 @@ int stringtoken(char* saved, tok_t* t, int* filelen) {
    return filelen[0];//end!
 }
 
+int primitivetoken(char* saved, tok_t* t, int* filelen) {
+   int ntoken = filelen[2];
+   filelen[2] += 1;
+   int size = 0;
+
+   while (isdigit(saved[filelen[1]]) || isalpha(saved[filelen[1]])) {
+      filelen[1] += 1;
+   }
+
+   t[ntoken].end = filelen[1] - 1;
+   t[ntoken].size = 0;
+
+   return filelen[1];
+}
 int arraytoken(char* saved, tok_t* t, int* filelen) {
    
    int ntoken = filelen[2];
    filelen[2] += 1;
    int size = 0;
 
-   while (saved[filelen[1]] != '{'
-      && saved[filelen[1]] != '['
-      && saved[filelen[1]] != '"') {//remove blank!
+   while (checkblank(saved[filelen[1]])) {
       filelen[1] = filelen[1] + 1;
    }
 
    while ((saved[filelen[1]] != ']') && (filelen[1] < filelen[0])) {//elements
       size = size + 1;
 
-      while (saved[filelen[1]] != ','
-         && saved[filelen[1]] != '{'
-         && saved[filelen[1]] != '['
-         && saved[filelen[1]] != '"') {//remove blank!
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
 
@@ -158,12 +169,13 @@ int arraytoken(char* saved, tok_t* t, int* filelen) {
             filelen[1] = filelen[1] + 1;
          }
       }
-
+      
       while (saved[filelen[1]] != '{'
          && saved[filelen[1]] != '['
          && saved[filelen[1]] != '"') {//remove blank!
          filelen[1] = filelen[1] + 1;
       }
+      
 
       //get element
       if (saved[filelen[1]] == '{') {
@@ -183,23 +195,17 @@ int arraytoken(char* saved, tok_t* t, int* filelen) {
          t[filelen[2]].type = ARRAY;
          filelen[1] += 1;
          filelen[1] = arraytoken(saved, t, filelen);
-      }/*
-      else if (isdigit(saved[filelen[1]])) {
+      }
+      else { 
          t[filelen[2]].start = filelen[1];
          t[filelen[2]].type = PRIMITIVE;//or undefined??
          filelen[2] += 1;
-         filelen[1] = numbertoken(saved, token, filelen);
-      }*/
-
-
-      while (saved[filelen[1]] != ','
-         && saved[filelen[1]] != '{'
-         && saved[filelen[1]] != '['
-         && saved[filelen[1]] != '"'
-         && saved[filelen[1]] != ']') {//remove blank!
+         filelen[1] = primitivetoken(saved, t, filelen);
+      }
+      
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
-
    }
    //get ]
 
@@ -224,23 +230,16 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
    filelen[2] += 1;//number of token is increased
    int size = 0;
 
-   while (saved[filelen[1]] != '{'
-      && saved[filelen[1]] != '['
-      && saved[filelen[1]] != '"') {//remove blank!
+   while (checkblank(saved[filelen[1]])) {
       filelen[1] = filelen[1] + 1;
    }
-   
 
    while ((saved[filelen[1]] != '}') && (filelen[1] < filelen[0])) {//key and value
       size += 1;
-      
-      while (saved[filelen[1]] != ',' 
-            && saved[filelen[1]] != '{'
-            && saved[filelen[1]] != '['
-            && saved[filelen[1]] != '"') {//remove blank!
+
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
-
       //get key size of key is 1 
       //should array, object be key??
       if (size >= 2) {
@@ -249,12 +248,9 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
          }
       }
 
-      while (saved[filelen[1]] != '{'
-         && saved[filelen[1]] != '['
-         && saved[filelen[1]] != '"') {//remove blank!
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
-
       //printf("%c", saved[filelen[1]]);
 
       if (saved[filelen[1]] == '{') {
@@ -278,13 +274,19 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
          filelen[1] += 1;
          filelen[1] = arraytoken(saved, t, filelen);
       }
+      else {
+         t[filelen[2]].start = filelen[1];
+         t[filelen[2]].type = PRIMITIVE;
+         t[filelen[2]].size = 1;//key
+         filelen[1] += 1;
+         filelen[1] = arraytoken(saved, t, filelen);
+      }
 
       //get :
 
-      while (saved[filelen[1]] != ':') {//remove blank!
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
-
 
       if (saved[filelen[1]] == ':') {
          filelen[1] = filelen[1] + 1;
@@ -295,9 +297,7 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
 
       //get value:
 
-      while (saved[filelen[1]] != '{'
-         && saved[filelen[1]] != '['
-         && saved[filelen[1]] != '"') {//remove blank!
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
 
@@ -319,19 +319,14 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
          filelen[1] += 1;
          filelen[1] = arraytoken(saved, t, filelen);
       }
-      else if (saved[filelen[1]] == ',') {
-         filelen[1] = filelen[1] + 1;
+      else if (isdigit(saved[filelen[1]]) || isalpha(saved[filelen[1]])) {
+         t[filelen[2]].start = filelen[1];
+         t[filelen[2]].type = PRIMITIVE;
+         filelen[1] += 1;
+         filelen[1] = primitivetoken(saved, t, filelen);
       }
-      else {
-         filelen[1] = filelen[1] + 1;
-         //printf("error at object!3");
-      }
-
-      while (saved[filelen[1]] != ','
-         && saved[filelen[1]] != '{'
-         && saved[filelen[1]] != '['
-         && saved[filelen[1]] != '"'
-         && saved[filelen[1]] != '}') {//remove blank!
+      
+      while (checkblank(saved[filelen[1]])) {
          filelen[1] = filelen[1] + 1;
       }
    }
@@ -342,25 +337,176 @@ int objecttoken(char* saved, tok_t* t, int* filelen) {
    if (saved[filelen[1]] == '}') {//end object
       t[ntoken].end = filelen[1];
       t[ntoken].size = size;
+      filelen[1] += 1;
 
-      filelen[1] += 1;      
       return filelen[1];
    }
    else {
-      printf("error at object!4");
+      printf("error at object!4 :%d@@", saved[filelen[1]]);
    }
 
    return filelen[0];//end!
 }
 
+  /*For graduation check 1*/
+int generalcnt, majorcnt = 0;
+int C, D, O = 0;  
+double generalSum, majorSum, finalGrade;
+bool earlyG, semester = false;
+bool courseFlag, gradeFlag, RcourseFlag = true;
 
-int main()
+void arrayCheck(char c1, char g1, char g2 );
+double gradeCheck(char g1, char g2);
+void digitcheck(char c1, int start, int end);
+void lettercheck(char c1, char c2, char c3);
+void graduationTest();
+void finalGraduationCheck();
+/*************************/
+
+void arrayCheck(char c1, char g1, char g2 ) 
+{
+    double generalGrade, majorGrade;
+    if(c1 == '2')
+    { 
+        generalcnt++;
+        generalGrade = gradeCheck(g1,g2);
+        generalSum += (generalGrade*2);
+
+    }else if(c1 == '3')
+    {     
+         majorcnt++;
+         majorGrade = gradeCheck(g1, g2);
+         majorSum += (majorGrade*3);
+    }
+}
+
+double gradeCheck(char g1, char g2)
+{
+    if(g1 == 'A')
+    {
+        if(g2 == '+') return 4.5;
+        else return 4.0;
+
+    }else if(g1 == 'B')
+    {
+        if(g2 == '+') return 3.5;
+        else return 3.0;
+
+    }
+    else if(g1 == 'C')
+    {
+         if(g2 == '+') return 2.5;
+        else return 2.0;
+        
+    }
+    else if(g1 == 'D')
+    {
+        if(g2 == '+') return 1.5;
+        else return 1.0;
+        
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+void digitcheck(char c1, int start, int end)
+{
+    char l[10];
+    //학기수 
+    if(c1 == '7') earlyG = true;
+    else if(c1 == '8' || c1 == '9') semester = true;
+}
+
+void lettercheck(char c1, char c2, char c3)
+{
+   if(c1 == 'C' && c2 == ' ' && c3 == 'n') C++;
+   else if(c1 == 'D'&& c2 == 'a' && c3 == 'r') D++;
+   else if(c1 == 'O'&& c2 == 'p' && c3 == 'm') O++;
+}
+
+void graduationTest()
+{
+    finalGrade = (generalSum+majorSum)/((generalcnt*2)+(majorcnt*3));
+    //전공 이수 학점 부족 또는 교양 이수 학점 부족
+    if(majorcnt <19 || generalcnt <19)courseFlag = false;
+    if(C < 1 || D < 1 || O < 1) RcourseFlag = false;
+    if(finalGrade <= 2.0) gradeFlag = false;
+
+    finalGraduationCheck();
+}
+
+
+void finalGraduationCheck()
 {
 
+    //Graduation Impossible
+    if(courseFlag == false)
+    {
+        printf("[Graduation Impossible]\n");
+        if(majorcnt<20) {
+            printf("major course - %d/60 uncompleted\n", majorcnt*3);
+        }
+        if(generalcnt<20) printf("general course - %d/40 uncompleted\n", generalcnt*2);
+    }
+
+     if(RcourseFlag == false)
+    {
+        if(C < 1)  printf("you should take C Programming\n");
+        if(D < 1) printf("you should take Data Structure\n");
+        if (O < 1) printf("you should take Operating Systems\n");
+    }
+    
+    else if(gradeFlag == false)
+    {
+        printf("you are final grade is lower than 2.0\n");
+
+    }
+
+    //Graduation Possible
+    if(courseFlag == true && gradeFlag == true && RcourseFlag == true)
+    {
+         printf("[Graduation Possible]\n");
+         if(earlyG == true && finalGrade >= 4.0) printf("Early Graduation\n");
+        printf("major course - %d/40 completed\n", majorcnt*3);
+        printf("general course - %d/40 completed\n", generalcnt*2);
+        printf("required major course - %d/3 completed\n", C+D+O);   
+        printf("final grade - %.2f\n", finalGrade);
+
+    }
+
+}
+
+
+int main(int argc, char* argv[])
+{
+    char temp;
+    char *r;
+
    int* filelen = (int*)malloc(sizeof(int) * 3);//filelen[0] for filelength filelen[1] for index filelen[2] for tindex
+   char* filename = 0;
+   if (argv[1] != 0) {
+      filename = argv[1];
+   }
+   else {
+      printf("Please enter your file for parsing!\n");
+      exit(1);
+   }
 
-   char* saved = saving("StudentInfo.json", &(filelen[0]));
-
+   char* saved = saving(filename, &(filelen[0]));
+   if (saved == 0) {
+      printf("Please enter correct file name!\n");
+      exit(1);
+   }
+   for (int i = 0; i < filelen[0]; i++) {
+      //printf("%c\n", saved[i]);
+      //printf("%d\n", saved[i]);
+      if (!checkblank(saved[i])) {
+         //printf("%c", saved[i]);
+      }
+   }
    if (saved == NULL)
       return -1;
    tok_t *tokens = NULL;
@@ -370,11 +516,57 @@ int main()
 
    for (int i = 0; i < ntokens; i++) {
       printf("[%3d] ", i + 1);
-      for (int j = tokens[i].start; j <= tokens[i].end; j++) {
-         printf("%c", saved[j]);
+      if (tokens[i].type == PRIMITIVE) {
+         for (int j = tokens[i].start; j <= tokens[i].end; j++) {
+            printf("%c", saved[j]);
+         }
+
+        
+
       }
-      printf(" (size=%d, %d~%d ", tokens[i].size, tokens[i].start, tokens[i].end);
-      if (tokens[i].type == PRIMITIVE)
+      else if (tokens[i].type == STRING) {
+         for (int j = tokens[i].start + 1; j < tokens[i].end; j++) {
+            printf("%c", saved[j]);
+
+         }
+             /*For graduation check 2*/
+            char chek, chek2, chek3;
+
+            chek = saved[(tokens[i].start)+1];
+            chek2 = saved[(tokens[i].start)+2];
+            chek3 = saved[(tokens[i].end)-2];
+
+            digitcheck(chek, tokens[i].start, tokens[i].end);
+            lettercheck(chek, chek2, chek3);
+            /*************************/
+
+
+      }
+      else if (tokens[i].type == ARRAY) {
+         for (int j = tokens[i].start; j <= tokens[i].end; j++) {
+            printf("%c", saved[j]);         
+         }
+            /*For graduation check 3*/
+
+            char course, grade1, grade2;
+
+            course = saved[(tokens[i].start)+2];
+            grade1 = saved[(tokens[i].start)+7];
+            grade2 = saved[(tokens[i].start)+8];
+
+            arrayCheck(course, grade1, grade2);
+            /*************************/
+
+      }
+      else if (tokens[i].type == OBJECT) {
+         for (int j = tokens[i].start; j <= tokens[i].end; j++) {
+            printf("%c", saved[j]);
+         }
+
+      }
+      printf(" (size=%d, %d~%d, ", tokens[i].size, tokens[i].start, tokens[i].end);
+     if (tokens[i].type == PRIMITIVE)
+           
          printf("JSMN_PRIMITIVE");
       else if (tokens[i].type == STRING)
          printf("JSMN_STRING");
@@ -384,11 +576,23 @@ int main()
          printf("JSMN_OBJECT");
 
 
-      printf("]\n");
+      printf(")\n");
    }
+
+
+    /*Graduation Check*/
+        printf("\n\n");
+
+        courseFlag = true;
+        RcourseFlag = true;
+        gradeFlag = true;
+
+        graduationTest();
+
+        printf("\n\n"); 
+   
 
    free(saved);
    free(tokens);
-   system("PAUSE");
    return 0;
 }
