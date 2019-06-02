@@ -4,7 +4,7 @@ This is a program that evaluates students if they meet the graduation standards.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+To getstarted for this project, you should have a C language compiler. If you already have one, put the input file (.json) in the same file that your project is in. Then you are all set to run the program.
 
 ### Prerequisites
 
@@ -35,9 +35,6 @@ Any C compilers can be utilized for this program.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
 
 ```
 1. go to the link
@@ -54,31 +51,20 @@ In case of using Terminal or other compilers
 ```
 
 
-## Running the tests
+## What does this project do?
 
-Either using command line argument or run configurations, enter the name of json file that contains all the information of students who are to be evaluted according to the graduation standards. 
+In this project, there is an application that evaluates the students in terms of graduation standards. After setting up for the excution of the application, you write the name of an input file (.json) as CLI or as Run Configuration in your compiler.
+After evaluating the student, the output will be printed.
 
-### Break down into end to end tests
+### Why is this project useful?
 
-Explain what these tests test and why
+Thie project is useful because you can visualize the result of graduation evaluation. This application does not simply print out the result of evaluation but shows what the evaluated student lacks as well as what the student should do more to satisfy the graduation standards.
 
-```
-Give an example
-```
 
-### And coding style tests
+### Where can I get more help, if need it?
 
-Explain what these tests test and why
+If you want to get more help, please contact us via github listed in Authors section below.
 
-```
-Give an example
-```
-
-## Deployment
-
-This version(0.0.1) of the program is only for the simple implementaions.
-The program has some strict regulations on the format and the style of writing the input json file. 
-Please follow the format we used in the provided example of json file.
 
 ## Built With
 
@@ -101,13 +87,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [PurpleBooth](https://gist.github.com/PurpleBooth) for the template of readme and contribution files
 
-## License
-
-This project is licensed under the HGU License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * This program was developed only for academic purpose
-* Something else
-* etc
+* The format of the input file is recommended to follow the provided example json file in thie project
+* Graduation standards are set as the one for HGU's computer engineering.
 
