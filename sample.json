@@ -1,0 +1,24 @@
+{
+  "studentID": "21600432",
+  "name": "h",
+  "major": True,
+  "semester": "Asdf",
+
+  "major course": {
+    "C programming": [
+      "3",
+      [
+        True,
+        "ahsdf",
+        [ "aaa", "sdf" ],
+        "asdf"
+      ]
+    ],
+    "Data structure": [ "3", "A0" ]
+  },
+
+  "general course": {
+    "Christian world view": [ "2", "A0" ]
+  }
+
+}

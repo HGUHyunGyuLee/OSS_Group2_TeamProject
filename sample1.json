@@ -1,0 +1,22 @@
+{  
+        "studentID": "21500132",
+        "name": "Laura Kim",
+        "major": "Computer Science" ,
+        "semester": "9",
+        "toeic":  "900",
+
+      "major course": {
+        "Introduction to Programming": [ "3", "A+" ],
+        "Computer Architecture": [ "3", "A0" ],
+        "Open Source Software": ["3", "B+"]
+      },
+
+      "general course": {
+        "Community Leadership Training 1": [ "1", "P" ],
+        "Bible and Life": ["2", "B+"],
+        "Number Theory": ["2", "A+"]
+      }
+}
+
+
+
