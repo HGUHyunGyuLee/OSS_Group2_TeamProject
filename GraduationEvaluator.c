@@ -936,6 +936,5 @@ int main(int argc, char* argv[])
 
    free(saved);
    free(tokens);
-   system("pause");
    return 0;
 }
